@@ -27,7 +27,15 @@ $(document).ready(function(){
         asNavFor: '.intro__dots',
         speed: 500,
         fade: true,
-        cssEase: 'linear'
+        cssEase: 'linear',
+        responsive: [
+            {
+              breakpoint: 1025,
+              settings: {
+                dots: true
+              }
+            }
+        ]
     });
     $('.intro__dots').slick({
         slidesToShow: 3,
@@ -37,7 +45,26 @@ $(document).ready(function(){
         arrows: false,
         centerMode: true,
         focusOnSelect: true,
+        
     });
+    if ($(window).width() <= '768'){
+        $('.choose-bouquet__items, .why-us__items').slick({
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            dots: true,
+            responsive: [
+                {
+                  breakpoint: 630,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  }
+                }
+            ]
+        });
+    };
 
     // Menu Btn
     $('.menu__btn').click(function(){
@@ -74,7 +101,7 @@ $(document).ready(function(){
         origin:'bottom',
         duration: 1000,
         distance:'25rem',
-        delay:800
+        delay:600
     });
     sr.reveal('.spotlight', {
         distance: '0px',
@@ -82,6 +109,8 @@ $(document).ready(function(){
         duration: 2000,
         delay:600
     });
-
+    if ($(window).width() <= '768'){
+        ScrollReveal().destroy();
+    };
 });
 
